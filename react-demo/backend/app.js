@@ -1,8 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const port = process.env.PORT || 3000
-const { getAllFruit, getAllVegetables, addVegetables } = require('./database')
+const port = process.env.PORT || 4000
+const { getAllFruit, getAllVegetables } = require('./database')
 
 app.use(cors())
 
@@ -17,10 +17,6 @@ app.get('/store/vegetables', (req, res) => {
 
 app.get('/', (req, res) => {
   res.redirect('/store/fruit')
-})
-
-app.post('/store/fruit', (req, res) => {
-  // addVegetables(req.params.body)
 })
 
 app.listen(port, () => {
