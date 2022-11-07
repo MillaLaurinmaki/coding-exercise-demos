@@ -72,7 +72,7 @@ export default function PriceNameTable(props) {
             </select>
             <ul>
               {selectedFruit.map((fruit) => {
-                return <li key={fruit.name}>{fruit.name} <input {...register(`selectedItem_${fruit.name}`)} placeholder="Quantity"></input></li>;
+                return <li key={fruit.name}>{fruit.name} <input type="number" {...register(`selectedFruit.${fruit.name}`)} placeholder="Quantity"></input></li>;
               })}
             </ul>
             <input type="submit" value="Add meal"/>
