@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
+import { Typography } from "@mui/material";
 
 export default function PriceNameTable(props) {
   const [selectedFruit, setSelectedFruit] = React.useState([]);
@@ -57,6 +58,7 @@ export default function PriceNameTable(props) {
 
       { selectedFruit.length > 0 && 
         <form onSubmit={()=>{ /*fetch()*/ }}>
+          <Typography variant="h5" sx={{mt: 5}}>Add meal</Typography>
           <p>
             <select>
               <option>Aamupala</option>
