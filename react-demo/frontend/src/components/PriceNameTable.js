@@ -55,13 +55,24 @@ export default function PriceNameTable(props) {
         </Table>
       </TableContainer>
 
-      <p>
-        <ul>
-          {selectedFruit.map((fruit) => {
-            return <li>{fruit.name}</li>;
-          })}
-        </ul>
-      </p>
+      { selectedFruit.length > 0 && 
+        <form onSubmit={()=>{ /*fetch()*/ }}>
+          <p>
+            <select>
+              <option>Aamupala</option>
+              <option>Lounas</option>
+              <option>Illallinen</option>
+            </select>
+            <ul>
+              {selectedFruit.map((fruit) => {
+                return <li>{fruit.name} <input placeholder="Quantity"></input></li>;
+              })}
+            </ul>
+            <input type="submit" value="Add meal"/>
+          </p>
+
+        </form>
+      }
     </>
   );
 }

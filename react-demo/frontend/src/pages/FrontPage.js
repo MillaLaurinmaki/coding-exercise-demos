@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 export default function FrontPage() {
@@ -19,6 +20,7 @@ export default function FrontPage() {
 
   return (
     <div>
+      <Typography variant="h4" component="h1">Front page</Typography>
       Hello front page! { dashboard.dailyCalorieCount }
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react";
-import "./App.css";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import FrontPage from "./pages/FrontPage";
 import { Box, Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -31,14 +30,12 @@ const router = createBrowserRouter([
 function App() {
   return (
     <React.StrictMode>
-      <Container maxWidth="l">
+      <Container maxWidth="md">
         <Grid container spacing={2}>
           <Grid xs={4}>
-            <div>
-              <Menu />
-            </div>
+            <Menu />
           </Grid>
-          <Grid xs={8}>
+          <Grid sx={{p: 2}} xs={8}>
             <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
               <RouterProvider router={router} />
             </Box>
