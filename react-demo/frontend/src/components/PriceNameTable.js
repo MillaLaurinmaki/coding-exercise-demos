@@ -8,9 +8,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Checkbox from "@mui/material/Checkbox";
 import { Typography } from "@mui/material";
+import { useForm } from "react-hook-form";
 
 export default function PriceNameTable(props) {
+  const { register, handleSubmit } = useForm();
   const [selectedFruit, setSelectedFruit] = React.useState([]);
+
+  const onSubmit = (data) => {
+    console.log("Received on submit:", data);
+  };
 
   function checkFruit(fruit) {
     if (selectedFruit.find((f) => fruit.name === f.name)) {
@@ -18,7 +24,6 @@ export default function PriceNameTable(props) {
     } else {
       setSelectedFruit([...selectedFruit, fruit]);
     }
-    console.log(selectedFruit);
   }
 
   return (
@@ -57,21 +62,21 @@ export default function PriceNameTable(props) {
       </TableContainer>
 
       { selectedFruit.length > 0 && 
-        <form onSubmit={()=>{ /*fetch()*/ }}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Typography variant="h5" sx={{mt: 5}}>Add meal</Typography>
-          <p>
-            <select>
+          <div>
+            <select {...register("mealType")}>
               <option>Aamupala</option>
               <option>Lounas</option>
               <option>Illallinen</option>
             </select>
             <ul>
               {selectedFruit.map((fruit) => {
-                return <li>{fruit.name} <input placeholder="Quantity"></input></li>;
+                return <li key={fruit.name}>{fruit.name} <input {...register(`selectedItem_${fruit.name}`)} placeholder="Quantity"></input></li>;
               })}
             </ul>
             <input type="submit" value="Add meal"/>
-          </p>
+          </div>
 
         </form>
       }
