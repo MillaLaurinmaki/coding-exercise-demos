@@ -5,6 +5,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import "react-vis/dist/style.css";
+import SimpleAccordion from "../components/SimpleAccordion";
 
 const FlexibleRadialChart = makeVisFlexible(RadialChart);
 
@@ -77,6 +78,9 @@ export default function FrontPage() {
               <Typography variant="body">Foobar count</Typography>
             </Box>
           </Stack>
+        </Grid>
+        <Grid xs={12}>
+          <SimpleAccordion />
         </Grid>
       </Grid>
     </div>
