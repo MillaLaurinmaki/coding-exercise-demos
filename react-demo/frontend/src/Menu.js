@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 export default function Menu() {
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Paper sx={{ bgcolor: 'primary.light' }}>
       <nav aria-label="secondary mailbox folders">
         <List>
         <ListItem disablePadding>
@@ -32,6 +32,6 @@ export default function Menu() {
           </ListItem>
         </List>
       </nav>
-    </Box>
+    </Paper>
   );
 }

@@ -1,12 +1,9 @@
 import { Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import {
-  makeVisFlexible,
-  RadialChart,
-  RadarChart,
-  CircularGridLines,
-} from "react-vis";
+import { makeVisFlexible, RadialChart } from "react-vis";
 import Grid from "@mui/material/Unstable_Grid2";
+import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import "react-vis/dist/style.css";
 
 const FlexibleRadialChart = makeVisFlexible(RadialChart);
@@ -34,72 +31,52 @@ export default function FrontPage() {
     fetchData();
   }, []);
 
-  const DATA = [
-    {
-      explosions: 7,
-      wow: 10,
-      dog: 8,
-      sickMoves: 9,
-      nice: 7,
-    },
-  ];
-
-  const DOMAIN = [
-    { name: "nice", domain: [0, 100], tickFormat: (t) => t },
-    { name: "explosions", domain: [6.9, 7.1] },
-    { name: "wow", domain: [0, 11] },
-    { name: "dog", domain: [0, 16] },
-    { name: "sickMoves", domain: [0, 20] },
-  ];
-
   return (
     <div>
-      <Typography variant="h4" component="h1">
-        Front page
-      </Typography>
+      <Box display="flex" alignItems="center" flexDirection="column">
+        <Typography variant="h4" component="h1">
+          Front page
+        </Typography>
       Hello front page! {dashboard.dailyCalorieCount}
+      </Box>
       <Grid container spacing={2}>
-        <Grid xs={6}>
+        <Grid xs={12}>
           <FlexibleRadialChart data={dashboard.donutGraph} height={300} />
         </Grid>
-        <Grid xs={6}>
-          <Typography variant="h4">Calories today 1260</Typography>
-          <Typography variant="h5">Fat today 300</Typography>
-          <Typography variant="h5">Protein today 540</Typography>
-        </Grid>
-        <Grid xs={6}>
-          <RadarChart
-            animation
-            data={DATA}
-            domains={DOMAIN}
-            style={{
-              polygons: {
-                fillOpacity: 0,
-                strokeWidth: 3,
-              },
-              axes: {
-                text: {
-                  opacity: 1,
-                },
-              },
-              labels: {
-                textAnchor: "middle",
-              },
-            }}
-            margin={{
-              left: 30,
-              top: 30,
-              bottom: 40,
-              right: 50,
-            }}
-            tickFormat={(t) => ""}
-            width={300}
-            height={300}
+        <Grid xs={12}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={10}
           >
-            <CircularGridLines
-              tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}
-            />
-          </RadarChart>
+            <Box display="flex" alignItems="center" flexDirection="column">
+              <RadialChart
+                data={dashboard.donutGraph}
+                width={100}
+                height={100}
+              />
+              <Typography variant="body">Step count</Typography>
+            </Box>
+
+            <Box display="flex" alignItems="center" flexDirection="column">
+              <RadialChart
+                data={dashboard.donutGraph}
+                width={100}
+                height={100}
+              />
+              <Typography variant="body">In-zone minutes</Typography>
+            </Box>
+
+            <Box display="flex" alignItems="center" flexDirection="column">
+              <RadialChart
+                data={dashboard.donutGraph}
+                width={100}
+                height={100}
+              />
+              <Typography variant="body">Foobar count</Typography>
+            </Box>
+          </Stack>
         </Grid>
       </Grid>
     </div>
